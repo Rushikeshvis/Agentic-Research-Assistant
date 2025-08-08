@@ -1,49 +1,162 @@
-# AI Research Agent
+AI-Powered Academic Research Agent
+This repository contains an AI-powered Research Agent built with IBM watsonx.ai, LangChain, and LangGraph. The agent is designed to assist with academic and scientific research tasks by automating literature discovery, summarizing papers, extracting data, and managing citations.
 
-[cite_start]*This project was developed for the IBM Hackathon.* 
+It leverages a powerful language model (mistralai/mistral-large) and a suite of tools to understand research questions and retrieve relevant, factual information with maximum efficiency.
 
-## 📝 Project Description
+✨ Features
+Based on its core directives, the agent is designed to perform the following functions:
 
-[cite_start]An AI system designed to assist with academic and scientific research tasks. [cite_start]This agent uses Natural Language Processing (NLP) and Retrieval-Augmented Generation (RAG) to help researchers, students, and professionals stay updated with the rapidly growing volume of academic publications[cite: 17, 19]. [cite_start]It automates repetitive tasks like citation management and data extraction, enhancing efficiency, accuracy, and innovation in R&D[cite: 51, 52].
+📚 Literature Discovery: Autonomously search the web using tools like Google Search, DuckDuckGo, and Wikipedia to find relevant literature.
 
-## 🎯 The Challenge
+📄 Intelligent Summarization: Provide concise, accurate summaries of articles and papers, highlighting key findings.
 
-[cite_start]Researchers, students, and professionals often struggle to stay updated with the vast volume of academic publications, technical articles, and evolving research trends[cite: 17]. [cite_start]Manually reviewing, filtering, and synthesizing this information is time-consuming and inefficient[cite: 18].
+📊 Data Extraction: Identify and pull specific data points, statistics, and arguments from web pages and documents.
 
-## ✨ Key Features
+🌐 Web Crawling: Scrape the content of web pages for in-depth analysis.
 
-[cite_start]This agent significantly reduces research time and improves the quality of literature reviews by offering:
+🤖 Conversational AI: Interact with the user to answer questions based on the information it finds.
 
-* [cite_start]**Semantic Search:** Conducts searches across research papers, journals, and datasets[cite: 33].
-* [cite_start]**Auto-Summarization:** Automatically generates summaries of selected papers[cite: 34].
-* [cite_start]**Citation Analysis:** Traces influence and connections through citation and reference analysis[cite: 35].
-* [cite_start]**Smart Recommendations:** Recommends relevant research papers based on a user’s current topic[cite: 36].
-* [cite_start]**Trend Analysis:** Analyzes trends over time for specific keywords or research domains[cite: 37].
-* [cite_start]**Collaboration Mapping:** Suggests potential co-authors or institutions based on similar research interests[cite: 38].
+⚙️ How It Works
+The agent is built using a ReAct (Reasoning and Acting) architecture powered by LangGraph. Here's a high-level overview:
 
-## 💻 Technology Stack
+Model: The core reasoning engine is a powerful chat model hosted on IBM watsonx.ai (mistralai/mistral-large).
 
-* [cite_start]**Core Technologies:** Natural Language Processing (NLP) [cite: 22]
-* [cite_start]**Foundation Model:** Mistral.
-* **IBM Cloud Services Used:**
-    * [cite_start]IBM Cloud Watsonx AI Studio 
-    * [cite_start]IBM Cloud Watsonx AI Runtime 
-    * [cite_start]IBM Cloud Agent Lab 
+Tools: The agent is equipped with a toolkit for information retrieval:
 
-## 🚀 Results & Demo
+GoogleSearch
 
-[cite_start]*(Here, you should embed the screenshots from your "Results" slides [cite: 44, 45, 46, 47] to show your agent in action.)*
+DuckDuckGo
 
-**Example 1: Literature Search**
-![Agent searching for AI research](link_to_your_screenshot.png)
+Wikipedia
 
-**Example 2: Hypothesis Generation**
-![Agent generating a hypothesis about plants](link_to_your_screenshot.png)
+WebCrawler
 
-## 🔮 Future Scope
+LangGraph: LangGraph controls the agent's execution flow. It allows the model to reason about a user's question, decide which tool to use, execute the tool, observe the result, and repeat the cycle until it has enough information to provide a final answer.
 
-* [cite_start]Multilingual Research Support [cite: 55]
-* [cite_start]Voice-Activated Research Assistant [cite: 56]
-* [cite_start]Real-Time Collaboration Features [cite: 57]
-* [cite_start]Integration with Publishing Platforms [cite: 59]
-* [cite_start]AI-Assisted Paper Drafting [cite: 60]
+Prompting: A detailed system prompt guides the agent's behavior, instructing it to be an efficient, accurate, and objective research partner, ensuring all information is cited and presented clearly.
+
+🚀 Getting Started
+Follow these instructions to set up and run the agent in your local environment.
+
+1. Prerequisites
+Python 3.10 or higher
+
+An IBM Cloud account
+
+A watsonx.ai Project ID
+
+Your IBM Cloud API Key
+
+2. Setup & Installation
+Clone the repository:
+
+git clone https://github.com/your-username/academic-research-agent.git
+cd academic-research-agent
+
+Create a virtual environment (recommended):
+
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+
+Install dependencies:
+Create a requirements.txt file with the following content:
+
+langchain-ibm
+ibm-watsonx-ai
+langgraph
+requests
+ipython
+
+Then, install the packages:
+
+pip install -r requirements.txt
+
+3. Configuration
+Environment Variables: The script requires your watsonx.ai PROJECT_ID. For the code to work seamlessly, set it as an environment variable.
+
+export PROJECT_ID="your-watsonx-project-id"
+
+Alternatively, you can hardcode it directly into the script.
+
+API Key: The script will securely prompt you to enter your IBM Cloud API key when you run it for the first time.
+
+🏃‍♀️ Usage
+You can run the agent by executing the notebook cells or by converting the notebook into a Python script.
+
+Launch the script from your terminal.
+
+Enter your IBM Cloud API Key when prompted.
+
+Ask your research question at the Question: prompt.
+
+Example Interaction
+Please enter your api key (hit enter): **********************************
+Question: What are the latest advancements in using AI for drug discovery?
+
+Agent: AI is accelerating drug discovery through several key advancements. Machine learning models, particularly deep learning, are used to predict the properties of molecules, their toxicity, and how they will bind to protein targets, significantly reducing the time and cost of initial screening. Generative AI is being used to design novel molecules from scratch that have desired properties for specific diseases. Additionally, AI analyzes vast datasets from clinical trials, genomic data, and scientific literature to identify new drug targets and biomarkers, leading to more personalized medicine.
+
+🤖 Agent Core Logic & Prompt
+The behavior of the agent is governed by a detailed system prompt. This prompt sets the rules, primary functions, and operational protocols.
+
+<details>
+<summary>Click to view the full System Prompt</summary>
+
+Core Directive
+You are a sophisticated AI Research Agent. Your primary mission is to assist users with academic and scientific research by automating and accelerating the entire research lifecycle, from literature discovery to manuscript drafting. You must act as an efficient, accurate, and innovative research partner.
+
+Primary Functions
+You are to execute the following core tasks based on user prompts and research questions:
+
+Literature Discovery: Autonomously search academic databases, journals, and open-access sources to find literature relevant to a user's research question or keywords.
+
+Intelligent Summarization: Provide concise, accurate summaries of research papers and articles, highlighting their objectives, methodology, key findings, and conclusions.
+
+Data Extraction: Identify and extract specific data points, statistics, and key arguments from provided documents or search results.
+
+Reference & Citation Management: Organize and format all references and citations in standard academic styles (e.g., APA, MLA, Chicago) and manage bibliographies.
+
+Content Generation & Drafting:
+
+Generate structured reports and literature reviews by synthesizing information from multiple sources.
+
+Draft sections of research papers, such as the introduction, background, or methodology.
+
+Suggest potential research hypotheses based on identified gaps or conflicting findings in the literature.
+
+Operational Protocols
+
+Cite Everything: For every piece of information, data point, or summary you provide, you MUST cite the original source document precisely. Accuracy and attribution are paramount.
+
+Maintain Objectivity: Present all information neutrally. When summarizing, do not inject your own opinions or interpretations. Clearly distinguish between the original author's findings and any synthesis you perform.
+
+Prioritize Quality Sources: In your literature searches, prioritize peer-reviewed journals, reputable conference proceedings, and established academic archives.
+
+Structure for Clarity: Organize all outputs logically. Use headings, bullet points, and clear language to ensure the information is easy to understand and use.
+
+Scope and Limitations
+
+Role as an Assistant: You are an assistant, not a replacement for a human researcher. Your outputs are drafts and suggestions that require critical review, validation, and intellectual input from the user.
+
+No Primary Research: You cannot conduct primary research (e.g., run experiments, conduct surveys, or analyze raw, un-processed data sets). Your role is to work with existing literature and data.
+
+No Plagiarism: You must not plagiarize. All generated text must be an original synthesis, and all sourced ideas must be clearly attributed.
+
+No Personal Opinions: You do not have beliefs or opinions. Your function is to process and present information from the sources you find and analyze.
+
+</details>
+
+🤝 Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you have suggestions for improvements, new features, or bug fixes.
+
+Fork the Project
+
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+
+Push to the Branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+📜 License
+This project is licensed under the MIT License. See the LICENSE file for details.
