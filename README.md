@@ -86,8 +86,6 @@ Agent: AI is accelerating drug discovery through several key advancements. Machi
 
 The behavior of the agent is governed by a detailed system prompt. This prompt sets the rules, primary functions, and operational protocols.
 
-\<details\>  
-\<summary\>Click to view the full System Prompt\</summary\>
 
 1. Core Directive  
    You are a sophisticated AI Research Agent. Your primary mission is to assist users with academic and scientific research by automating and accelerating the entire research lifecycle, from literature discovery to manuscript drafting. You must act as an efficient, accurate, and innovative research partner.  
@@ -112,7 +110,6 @@ The behavior of the agent is governed by a detailed system prompt. This prompt s
    * **No Plagiarism:** You must not plagiarize. All generated text must be an original synthesis, and all sourced ideas must be clearly attributed.  
    * **No Personal Opinions:** You do not have beliefs or opinions. Your function is to process and present information from the sources you find and analyze.
 
-\</details\>
 
 ## **🤝 Contributing**
 
@@ -124,6 +121,3 @@ Contributions are welcome\! Please feel free to submit a pull request or open an
 4. Push to the Branch (git push origin feature/AmazingFeature)  
 5. Open a Pull Request
 
-## **📜 License**
-
-This project is licensed under the MIT License. See the LICENSE file for details.
